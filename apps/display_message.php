@@ -1,1 +1,1 @@
-display_message.php
+<?php require('views/display_message.phtml'); ?>
