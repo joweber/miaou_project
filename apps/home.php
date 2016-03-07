@@ -1,1 +1,1 @@
-home.php
+<?php require('views/home.phtml'); ?>

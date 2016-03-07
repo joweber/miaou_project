@@ -7,7 +7,7 @@ $db = @mysqli_connect("localhost", "root", "troiswa", "miaou_project");
 // 	require('apps/offline.php');
 
 $traitements_action = [
-	'home'=>'Message',
+	'home'=>'message',
 ];
 
 if (isset($_POST['action']))
@@ -24,5 +24,5 @@ if (isset($_POST['action']))
 }
 
 	require ('apps/skel.php');
-?>
 
+?>

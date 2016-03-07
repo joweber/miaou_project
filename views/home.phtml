@@ -1,1 +1,8 @@
-home.phtml
+
+<?php 
+ 	include_once('models/Message.class.php');
+	require('views/display_message.phtml');
+ 	require('views/new_message.phtml'); 
+	$message = new Message();
+	var_dump($message);
+ ?>

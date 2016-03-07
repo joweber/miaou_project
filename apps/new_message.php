@@ -1,1 +1,1 @@
-new_message.php
+<?php require('views/new_message.phtml'); ?>
