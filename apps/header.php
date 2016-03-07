@@ -1,1 +1,3 @@
-header.php
+<?php 
+	require('views/header.phtml'); 
+?>
