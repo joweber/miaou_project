@@ -6,8 +6,24 @@ $db = @mysqli_connect("localhost", "root", "troiswa", "miaou_project");
 // if (!$db)
 // 	require('apps/offline.php');
 
+$page = "home";
+$access_page = ['home'];
+
+if (isset($_GET['page']))
+{
+	if (in_array($_GET['page'], $access_page))
+	{
+		$page = $_GET['page'];
+	}
+	else
+	{
+		header('Location: home');
+		exit;
+	}
+}
+
 $traitements_action = [
-	'home'=>'message',
+	'new_message'=>'message',
 ];
 
 if (isset($_POST['action']))

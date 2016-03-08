@@ -28,5 +28,6 @@ class UserManager
 		else
 			throw new Exception("Erreur interne");
 	}
+
 }
 ?>
