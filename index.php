@@ -24,6 +24,8 @@ if (isset($_GET['page']))
 
 $traitements_action = [
 	'new_message'=>'message',
+	'register'=>'user',
+	'login'=>'user',
 ];
 
 if (isset($_POST['action']))
