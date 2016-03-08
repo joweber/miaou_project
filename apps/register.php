@@ -1,1 +1,3 @@
-register.php
+<?php
+require('views/register.phtml');
+?>
