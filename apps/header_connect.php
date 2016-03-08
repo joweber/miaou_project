@@ -1,1 +1,3 @@
-header_connect.php
+<?php
+require('views/header_connect.phtml');
+?>
