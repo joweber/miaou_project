@@ -26,6 +26,7 @@ $traitements_action = [
 	'new_message'=>'message',
 	'register'=>'user',
 	'login'=>'user',
+	'logout'=>'user',
 ];
 
 if (isset($_POST['action']))

@@ -45,6 +45,13 @@ if (isset($_POST['action']))
 			}
 		}
 	}
+	if ($action == 'logout')
+	{
+		session_destroy();
+		$_SESSION = array();
+		header('Location: home');
+		exit;
+	}	
 }
 
 ?>
