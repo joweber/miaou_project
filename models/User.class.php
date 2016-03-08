@@ -2,7 +2,7 @@
 class User
 {
 	// Déclarer les propriétés
-	private $id; //même nom que dans la BDD.
+	private $id_user; //même nom que dans la BDD.
 	private $login;
 	private $hash;
 	private $date;
@@ -20,7 +20,7 @@ class User
 	// getter de $Id -> getId
 	public function getId()
 	{
-		return $this->id; //On récupère la propriété id de $this - Ne pas mettre de $ après une flèche.
+		return $this->id_user; //On récupère la propriété id de $this - Ne pas mettre de $ après une flèche.
 	}
 
 	public function getLogin()

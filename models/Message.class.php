@@ -41,7 +41,7 @@ class Message
 
 	public function setAuthor($author)
 	{
-		if ($this->author !== null)
+		if (strlent($author) > 0 && strlen($author) < 11)
 			$this->author = $author;
 	}
 

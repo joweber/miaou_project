@@ -38,7 +38,7 @@ if (isset($_POST['action']))
 	{
 		try
 		{
-			$message = $messagemanager->createMessage($_POST['content']);
+			$message = $messagemanager->createMessage($_POST['content'],$_SESSION['id']);
 			header('Location: home');
 			exit;
 		}
