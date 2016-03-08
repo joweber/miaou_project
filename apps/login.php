@@ -1,1 +1,3 @@
-login.php
+<?php
+require('views/login.phtml');
+?>
