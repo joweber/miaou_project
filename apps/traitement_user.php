@@ -1,27 +1,49 @@
 <?php
 
+
 require('models/User.class.php');
 require('models/UserManager.class.php');
 $usermanager = new UserManager($db);
-if (isset($_POST['login']),$_POST['password'])
+
+if (isset($_POST['action']))
 {
-	try
+	$action = $_POST['action'];
+	if ($action == 'login')
 	{
-		$user = $userManager->getByLogin($_POST['login']);
-		if ($user)
+		if (isset($_POST['login'], $_POST['password']))
 		{
-			if ($user->verifPassword($_POST['password']))
+			try
 			{
+				$manager = new UserManager($db);
+				$user = $manager->getByLogin($_POST['login']);
+				$user->verifPassword($_POST['password']);
 				$_SESSION['id'] = $user->getId();
 				$_SESSION['login'] = $user->getLogin();
 				header('Location: home');
 				exit;
 			}
+			catch (Exception $e)
+			{
+				$login = $_POST['login'];
+				$error = $e->getMessage();
+			}
 		}
 	}
-	catch (Exception $e)
+	if ($action == 'register')
 	{
-		$error = $e->getMessage();
+		if (isset($_POST['login'],$_POST['password1'],$_POST['password2']))
+		{
+			try
+			{
+				$user = $usermanager->createLogin($_POST['login'],$_POST['password1'],$_POST['password2']);
+				header('Location: home');
+				exit;
+			}
+			catch (Exception $e)
+			{
+				$error = $e->getMessage();
+			}
+		}
 	}
 }
 

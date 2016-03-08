@@ -32,7 +32,10 @@ class User
 	{
 		return $this->date;
 	}
-
+	public function getHash()
+	{
+		return $this->hash;
+	}
 	public function isAdmin() // Un getter de booleen transforme le get en is
 	{
 		return $this->admin;

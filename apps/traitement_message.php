@@ -33,27 +33,21 @@ $messagemanager = new MessageManager($db);
 if (isset($_POST['action']))
 {
 	$action = $_POST['action'];
-	// Récupération de l'action Create Ticket
 	if ($action == 'new_message')
 	if (isset($_POST['content']))
 	{
 		try
 		{
-			if ($message)
-			{
-				if ($message->setContent($_POST['content']))
-				{
-					$message = $messagemanager->createMessage($_POST['content']);
-					header('Location: home');
-					exit;
-				}
-			}
+			$message = $messagemanager->createMessage($_POST['content']);
+			header('Location: home');
+			exit;
 		}
 		catch (Exception $e)
 		{
 			$error = $e->getMessage();
 		}
 	}
+
 }
 
 ?>

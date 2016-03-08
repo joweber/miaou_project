@@ -23,11 +23,31 @@ class UserManager
 				return $user;
 			}
 			else
-				throw new Exception("Utilisateur inexistant");
+				throw new Exception("Utilisateur non existant");
 		}
-		else 
+		else
 			throw new Exception("Erreur interne");
 	}
-	
+
+	public function createLogin($login, $password1, $password2)
+	{
+		$user = new User();
+		$user->setLogin($login);
+		$user->setAdmin(false);
+		$user->initPassword($password1,$password2);
+		$hash = mysqli_real_escape_string($this->db, $user->getHash());
+		$login = mysqli_real_escape_string($this->db, $user->getLogin());
+		$query = "INSERT user (login, hash) VALUES('".$login."','".$hash."')";
+		try
+		{
+			$res = mysqli_query($this->db, $query);
+		}
+		catch (Exception $e)
+		{
+			throw new Exception("Erreur interne");
+		}
+		return $this->getByLogin($user->getLogin());
+	}
+
 }
 ?>
