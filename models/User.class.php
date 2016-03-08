@@ -8,6 +8,13 @@ class User
 	private $date;
 	private $admin;
 
+		// Constructeur
+	public function __construct()
+	{
+		// Youhou !
+	}
+
+
 	// Déclarer les méthodes
 	//Liste des différents getter
 	// getter de $Id -> getId
@@ -38,12 +45,16 @@ class User
 	{
 		if (strlen($login) > 3 && strlen($login) < 31)
 			$this->login = $login;
+		else
+			throw new Exception("Login incorrect (doit être entre 4 et 30 caractères");
 	}
 	
 	public function setAdmin($admin)
 	{
 		if ($admin === true || $admin === false)
 			$this->admin = $admin;
+		else
+			throw new Exception("Admin incorrect(n'est pas égal à true ou false");
 	
 		// ou
 		// 		$this->admin = (bool)$admin;// (bool) permet de "caster" une variable en un type particulier, transformer n'importe quel type en booleen (ici)
@@ -53,7 +64,7 @@ class User
 	// Vérfier le password ?
 	public function verifPassword($password)
 	{
-		return password_verify($password, $this->password); //retourne true ou false, en fonction si c'est bon ou pas.
+		return password_verify($password, $this->hash); //retourne true ou false, en fonction si c'est bon ou pas.
 	}
 
 		// modifier password ?
@@ -68,8 +79,14 @@ class User
 				{
 					$this->hash = password_hash($newPassword, PASSWORD_BCRYPT, ["cost"=>12]);
 				}
+				else 
+					throw new Exception("Ancien mot de passe incorrect");
 			}
+			else 
+				throw new Exception("Mot de passe trop court");
 		}
+		else 
+			throw new Exception("Les deux mots de passe ne correspondent pas");
 	}
 	public function initPassword($newPassword1, $newPassword2)
 	{
@@ -82,8 +99,14 @@ class User
 				{
 					$this->hash = password_hash($newPassword, PASSWORD_BCRYPT, ["cost"=>12]);
 				}
+				else 
+					throw new Exception("Mot de passe trop court");
 			}
+			else 
+				throw new Exception("Les deux mots de passe ne correspondent pas");
 		}
+		else 
+			throw new Exception("Le mot de passe a déjà été initialisé, impossible de le faire une seconde fois");
 	}
 
 }
