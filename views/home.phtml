@@ -1,10 +1,17 @@
     <div class="container">
 
-      <div class="starter-template">
+      <div class="main">
         <h1>Système de Chat</h1>
-        <p class="lead">Use this document as a way to quickly start any new project.<br> All you get is this text and a mostly barebones HTML document.</p>
-      </div>
+        <p class="lead">N'hésitez pas à vous connecter</p>
 
+        <?php 
+      //  include_once('models/Message.class.php');
+          require('views/display_message.phtml');
+          require('apps/new_message.php'); 
+//        $message = new Message();
+//        var_dump($message);
+//      ?>
+      </div>
     </div><!-- /.container -->
 
 
@@ -18,11 +25,4 @@
     <script src="../../assets/js/ie10-viewport-bug-workaround.js"></script>
 
 
-<?php 
- 	// include_once('models/Message.class.php');
-	require('views/display_message.phtml');
- 	require('views/new_message.phtml'); 
-// 	$message = new Message();
-// 	var_dump($message);
-//  ?>
 

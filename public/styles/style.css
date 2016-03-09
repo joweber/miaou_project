@@ -1,3 +1,19 @@
 body{
 	padding-top: 50px;
 }
+.container{
+	background: url("../images/background.jpg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+}
+.main{
+	background: rgba(255,255,255,0.6);
+}
+.display-group{
+	height: 50em;
+	margin-bottom: 3%;
+}
+.form-control{
+	background-color: rgba(255,255,255,0.3);
+}
