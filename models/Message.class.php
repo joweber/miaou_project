@@ -4,12 +4,16 @@ class Message
 	// Déclarer les propriétés
 	private $db;
 	private $id;
-	private $id_author;
-	private $author;
+	private $id_author;// -> User
+	private $author;// -> calculée -> composition
 	private $content;
 	private $date;
 
 	// GETTER
+	public function __construct($db)
+	{
+		$this->db = $db;
+	}
 
 	public function getId()
 	{
@@ -18,20 +22,13 @@ class Message
 
 	public function getAuthor()
 	{
-		if ($this->author === null)
+		if ($this->author == null)
 		{
-			try
-			{
-				$manager = new UserManager($this->db);
-				$this->author = $manager->getById($this->id_author);
-			}
-			catch (Exception $e)
-			{
-
-			}
+			$manager = new UserManager($this->db);
+			$this->author = $manager->getById($this->id_author);
 		}
 		return $this->author;
-	}	
+	}
 
 	public function getContent()
 	{
@@ -53,10 +50,10 @@ class Message
 			throw new Exception("Le message doit être compris entre 1 et 254 caractères");
 	}	
 
-	public function setAuthor($author)
+	public function setAuthor(User $author)
 	{
-		if (strlent($author) > 0 && strlen($author) < 11)
-			$this->author = $author;
+		$this->author = $author;
+		$this->id_author = $author->getId();
 	}
 
 }

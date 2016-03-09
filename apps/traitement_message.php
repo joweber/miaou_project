@@ -39,7 +39,9 @@ if (isset($_POST['action']))
 	{
 		try
 		{
-			$message = $messagemanager->createMessage($_POST['content'],$_SESSION['id']);
+			$manager = new UserManager($db);
+			$user = $manager->getById($_SESSION['id']);
+			$message = $messagemanager->createMessage($_POST['content'], $user);
 			header('Location: home');
 			exit;
 		}
