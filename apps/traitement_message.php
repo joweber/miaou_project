@@ -30,6 +30,7 @@ $messagemanager = new MessageManager($db);
 // 		}
 // 	}
 // }
+
 if (isset($_POST['action']))
 {
 	$action = $_POST['action'];
@@ -49,5 +50,7 @@ if (isset($_POST['action']))
 	}
 
 }
+
+// SELECT login.user, content.message FROM message, user WHERE id_user.user = id_author.message
 
 ?>

@@ -2,6 +2,18 @@
 // SESSION
 session_start();
 
+spl_autoload_register(function($class)
+{
+    require('models/'.$class.'.class.php');
+});
+
+/*	AVANT :
+function __autoload($class)
+{
+    require('models/'.$class.'.class.php');
+}
+*/
+
 $db = @mysqli_connect("localhost", "root", "troiswa", "miaou_project");
 // if (!$db)
 // 	require('apps/offline.php');

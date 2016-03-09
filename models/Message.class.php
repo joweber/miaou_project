@@ -2,7 +2,9 @@
 class Message
 {
 	// Déclarer les propriétés
+	private $db;
 	private $id;
+	private $id_author;
 	private $author;
 	private $content;
 	private $date;
@@ -16,6 +18,18 @@ class Message
 
 	public function getAuthor()
 	{
+		if ($this->author === null)
+		{
+			try
+			{
+				$manager = new UserManager($this->db);
+				$this->author = $manager->getById($this->id_author);
+			}
+			catch (Exception $e)
+			{
+
+			}
+		}
 		return $this->author;
 	}	
 

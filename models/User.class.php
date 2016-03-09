@@ -2,7 +2,7 @@
 class User
 {
 	// Déclarer les propriétés
-	private $id_user; //même nom que dans la BDD.
+	private $id_user; //même nom que dans la BDD..
 	private $login;
 	private $hash;
 	private $date;
