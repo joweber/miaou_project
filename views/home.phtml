@@ -4,13 +4,14 @@
         <h1>Système de Chat</h1>
         <p class="lead">N'hésitez pas à vous connecter</p>
 
-        <?php 
-      //  include_once('models/Message.class.php');
-          require('views/display_message.phtml');
-          require('apps/new_message.php'); 
-//        $message = new Message();
-//        var_dump($message);
-//      ?>
+
+  <!-- include_once('models/Message.class.php'); -->
+        <div class="display-group form-control">
+        <?php require('apps/display_message.php'); ?>
+        </div>
+       <?php require('apps/new_message.php'); ?>
+<!--         $message = new Message();
+        var_dump($message); -->
       </div>
     </div><!-- /.container -->
 
