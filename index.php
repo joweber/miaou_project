@@ -14,7 +14,7 @@ function __autoload($class)
 }
 */
 
-$db = @mysqli_connect("localhost", "root", "troiswa", "miaou_project");
+$db = @mysqli_connect("192.168.1.76", "miaou_project", "password", "miaou_project");
 // if (!$db)
 // 	require('apps/offline.php');
 
