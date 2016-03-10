@@ -27,7 +27,7 @@ while ($count < $max)// On récupère les résultats de notre requête un par un
 		}
 		else
 		{
-			$class = "";
+			$class = "gauche";
 		}
 			require('views/display_message.phtml');
 		
