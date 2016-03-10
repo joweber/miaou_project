@@ -1,19 +1,20 @@
-    <div class="container">
-
-      <div class="main">
+<div class="container">
+    <div class="main row">
         <h1>Système de Chat</h1>
         <p class="lead">N'hésitez pas à vous connecter</p>
-
-
-  <!-- include_once('models/Message.class.php'); -->
-        <div class="display-group form-control scroll-x" id="display-group">
-        <?php require('apps/display_message.php'); ?>
+        <div class="main-wrap col-xs-12 col-md-8">
+            <div class="display-group form-control" id="display-group">
+                <?php require('apps/display_message.php'); ?>
+            </div>
+            <div>
+                <?php require('apps/new_message.php'); ?>
+            </div>
         </div>
-       <?php require('apps/new_message.php'); ?>
-<!--         $message = new Message();
-        var_dump($message); -->
-      </div>
-    </div><!-- /.container -->
+        <div class="option-wrap col-xs-12 col-md-4">
+            <?php require('apps/display_user.php'); ?>
+        </div>
+    </div>
+</div>
 
 
     <!-- Bootstrap core JavaScript
