@@ -1,1 +1,1 @@
-<p class="<?=htmlentities($class)?>"> Moi : <?=htmlentities($message->getContent())?> <span class="date"><?=htmlentities($message->getDate())?></span></p>	
+<p class="<?=htmlentities($class)?>"> Moi : <?=htmlentities($message->getContent())?> <span class="date"><?=date('H\:i', strtotime($message->getDate()))?></span></p>	
