@@ -18,7 +18,20 @@ $max = sizeof($list);
 while ($count < $max)// On récupère les résultats de notre requête un par un
 {
 	$message = $list[$count];
-	require('views/display_message.phtml'); 
+	if (isset ($_SESSION['login']))
+	{
+		if($_SESSION['login']==($message->getAuthor()->getLogin()))
+		{
+			// require('views/display_message.phtml');
+			$class = "droite";
+		}
+		else
+		{
+			$class = "";
+		}
+			require('views/display_message.phtml');
+		
+	}
 	$count++;
 }
 
