@@ -14,9 +14,14 @@ function __autoload($class)
 }
 */
 
-$db = @mysqli_connect("192.168.1.76", "miaou_project", "password", "miaou_project");
-// if (!$db)
-// 	require('apps/offline.php');
+try
+{
+    $db = new PDO('mysql:dbname=miaou_project;host=127.0.0.1', 'root', 'troiswa');
+}
+catch (PDOException $e)
+{
+    $error = 'Erreur interne';
+}
 
 $page = "home";
 $access_page = ['home'];

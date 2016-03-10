@@ -12,12 +12,12 @@ class UserManager
 
 	public function getByLogin($login)
 	{
-		$login = mysqli_real_escape_string($this->db, $login);
-		$query = "SELECT * FROM user WHERE login='".$login."'";
-		$res = mysqli_query($this->db, $query);
+		$login = $this->db->quote($login);
+		$query = "SELECT * FROM user WHERE login=".$login."";
+		$res = $this->db->query($query);
 		if ($res)
 		{
-			$user = mysqli_fetch_object($res, "User");
+			$user = $res->fetchObject("User");
 			if ($user)
 			{
 				return $user;
@@ -31,11 +31,11 @@ class UserManager
 	public function getById($id)
 	{
 		$id = intval($id);
-		$query = "SELECT * FROM user WHERE id_user='".$id."'";
-		$res = mysqli_query($this->db, $query);
+		$query = "SELECT * FROM user WHERE id_user=".$id."";
+		$res = $this->db->query($query);
 		if ($res)
 		{
-			$user = mysqli_fetch_object($res, "User");
+			$user = $res->fetchObject("User");
 			if ($user)
 			{
 				return $user;
@@ -49,13 +49,12 @@ class UserManager
 
 	public function getLoginExist($login)
 	{
-		$loginVerif = mysqli_real_escape_string($this->db, $login);
-		$query = "SELECT id_user FROM user WHERE login='".$loginVerif."'";
-		$res = mysqli_query($this->db, $query);
+		$loginVerif = $this->db->quote($login);
+		$query = "SELECT id_user FROM user WHERE login=".$loginVerif."";
+		$res = $this->db->query($query);
 		if ($res)
 		{
-			$id = mysqli_fetch_row($res);
-			if ($id == NULL)
+			if ($res->rowCount() == 0)
 			{
 				return TRUE; 
 			}
@@ -76,12 +75,12 @@ class UserManager
 		$user->initPassword($password1,$password2);
 		if($this->getLoginExist($login))
 		{
-			$hash = mysqli_real_escape_string($this->db, $user->getHash());
-			$login = mysqli_real_escape_string($this->db, $user->getLogin());
-			$query = "INSERT user (login, hash) VALUES('".$login."','".$hash."')";
+			$login = $this->db->quote($user->getLogin());
+			$hash = $this->db->quote($user->getHash());
+			$query = "INSERT user (login, hash) VALUES(".$login.",".$hash.")";
 			try
 			{
-				$res = mysqli_query($this->db, $query);
+				$res = $this->db->exec($query);
 			}
 			catch (Exception $e)
 			{
