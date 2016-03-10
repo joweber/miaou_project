@@ -22,14 +22,14 @@ while ($count < $max)// On récupère les résultats de notre requête un par un
 	{
 		if($_SESSION['login']==($message->getAuthor()->getLogin()))
 		{
-			// require('views/display_message.phtml');
 			$class = "droite";
+			require('views/display_message_connect.phtml');
 		}
 		else
 		{
-			$class = "";
-		}
+			$class = "gauche";
 			require('views/display_message.phtml');
+		}
 		
 	}
 	$count++;
