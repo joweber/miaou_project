@@ -1,1 +1,4 @@
-<p class="<?=htmlentities($class)?>"> Moi : <?=htmlentities($message->getContent())?> <span class="date"><?=date('H\:i', strtotime($message->getDate()))?></span></p>	
+<div class="<?=htmlentities($class)?>">
+	<div class="col-xs-11"> Moi : <?=htmlentities($message->getContent())?> </div>
+	<div class="date col-xs-1"><?=date('H\:i', strtotime($message->getDate()))?></div>
+</div>	

@@ -12,7 +12,7 @@ $('document').ready(function()
 
 	$(function(){
 		setInterval(function(){
-			$('#display-group').load('home.phtml #display-group > p');
+			$('#display-group').load('home.phtml #display-group > div');
 			$('#display-group').animate({scrollTop: $('#display-group')[0].scrollHeight});
 		}, 5000);
 	});
