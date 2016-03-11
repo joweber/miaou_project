@@ -43,3 +43,8 @@ $('document').ready(function()
 
 	// $("#element").scrollBottom();
 });
+function reste(texte)
+{
+    var restants=1023-texte.length;
+    document.getElementById('caracteres').innerHTML=restants;
+}
