@@ -36,7 +36,8 @@ class MessageManager
 	public function getAll()
 	{
 
-		$query = "SELECT * FROM message LIMIT 100";
+		// $query = "SELECT * FROM message LIMIT 100";
+		$query = "SELECT * FROM (SELECT * FROM message ORDER BY id_message DESC LIMIT 100) sub ORDER BY id_message ASC";
 		$result = $this->db->query($query);
 		$messages = [];
 		while ($message = $result->fetchObject('Message', [$this->db]))
