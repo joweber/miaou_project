@@ -94,6 +94,31 @@ class UserManager
 		}
 	}
 
+	public function editDate($id)
+	{
+		$id = intval($id);
+		$query = "UPDATE user SET date=CURRENT_TIMESTAMP WHERE id_user='".$id."'";
+		$res = $this->db->exec($query);
+	}
+
+	public function getUserConnect()
+	{
+		$query = "SELECT * FROM user WHERE date > CURRENT_TIMESTAMP - 10 ORDER BY login ASC";
+		$res = $this->db->query($query);
+		if ($res)
+		{
+			while($user = $res->fetchObject("User"))
+			{
+				$users[] = $user;
+			}
+			return $users;
+		}
+		else
+		{
+			throw new Exception("Erreur de récupération des Users connectés");
+		}
+
+	}
 
 }
 ?>

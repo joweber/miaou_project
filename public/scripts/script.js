@@ -14,9 +14,16 @@ $('document').ready(function()
 		setInterval(function(){
 			$('#display-group').load('home.phtml #display-group > div');
 			$('#display-group').animate({scrollTop: $('#display-group')[0].scrollHeight});
-		}, 60000);
+		}, 5000);	
 	});
 
+	$(function(){
+		setInterval(function(){
+			$('.display-user').load('home.phtml .display-user > ul');
+			$('.display-user').animate({scrollTop: $('.display-user')[0].scrollHeight});
+		}, 5000);	
+	});
+			
 	// window.onscroll = function() {myFunction()};
 
 	// function myFunction() {
