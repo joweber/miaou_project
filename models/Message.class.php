@@ -44,6 +44,7 @@ class Message
 
 	public function setContent($content)
 	{
+		// var_dump(strlen($content), $content);
 		if (strlen($content) > 0 && strlen($content) < 1023)
 			$this->content = $content;
 		else 

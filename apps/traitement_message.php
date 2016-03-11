@@ -48,6 +48,8 @@ if (isset($_POST['action']))
 		catch (Exception $e)
 		{
 			$error = $e->getMessage();
+			// var_dump($error);
+			// die();
 		}
 	}
 

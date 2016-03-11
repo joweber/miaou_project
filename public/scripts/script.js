@@ -45,6 +45,6 @@ $('document').ready(function()
 });
 function reste(texte)
 {
-    var restants=1023-texte.length;
+    var restants=1022-texte.length;
     document.getElementById('caracteres').innerHTML=restants;
 }

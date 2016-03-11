@@ -16,7 +16,7 @@ function __autoload($class)
 
 try
 {
-    $db = new PDO('mysql:dbname=miaou_project;host=127.0.0.1', 'root', 'troiswa');
+    $db = new PDO('mysql:dbname=miaou_project;host=192.168.1.76', 'miaou_project', 'password');
 }
 catch (PDOException $e)
 {
