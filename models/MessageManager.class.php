@@ -15,18 +15,21 @@ class MessageManager
 		$message = new Message($this->db);
 		$message->setContent($content);
 		$message->setAuthor($author);
-		$content = mysqli_real_escape_string($this->db, $message->getContent());
+		$content = $this->db->quote($message->getContent());
 		$id_author = intval($message->getAuthor()->getId());
-		$query = "INSERT INTO message (content, id_author) VALUES('".$content."','".$id_author."')";
-		$res = mysqli_query($this->db, $query);
+		// var_dump($content);
+		// var_dump($id_author);
+		$query = "INSERT INTO message (content, id_author) VALUES(".$content.",'".$id_author."')";
+		// var_dump($query);
+		$res = $this->db->exec($query);
 	}
 
 	public function getAll()
 	{
 		$query = "SELECT * FROM message LIMIT 0, 100";
-		$result = mysqli_query($this->db, $query);
+		$result = $this->db->query($query);
 		$messages = [];
-		while ($message = mysqli_fetch_object($result, 'Message', [$this->db]))
+		while ($message = $result->fetchObject('Message', [$this->db]))
 		{
 			$messages[] = $message;
 		}

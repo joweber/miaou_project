@@ -44,10 +44,10 @@ class Message
 
 	public function setContent($content)
 	{
-		if (strlen($content) > 0 && strlen($content) < 255)
+		if (strlen($content) > 0 && strlen($content) < 1023)
 			$this->content = $content;
 		else 
-			throw new Exception("Le message doit être compris entre 1 et 254 caractères");
+			throw new Exception("Le message doit être compris entre 1 et 1023 caractères");
 	}	
 
 	public function setAuthor(User $author)
